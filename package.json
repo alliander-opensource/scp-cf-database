@@ -1,0 +1,20 @@
+{
+	"name"			: "scp-cf-database",
+	"version"		: "1.0.0",
+	"author"		: "Max Spanning",
+	"description"	: "scp-cf-database versimpeld het werken met de CF database.\r\n - De connectie wordt automatisch gelegd in de constructor dus daar hoef je niet meer naar te kijken.\r\n - Daardoor kan je deze class rechtstreeks aanspreken ipv hem uit je request object te halen / mee te geven naar een andere functie.\r\n - Alle queries worden automatisch escaped\r\n Daarnaast zitten er nog een aantal handige functies bij.",
+	"main"			: "./lib/index",
+	"repository"	: {
+		"type"	: "git",
+		"url"	: ""
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@sap/hana-client"	: "2.4.171",
+		"@sap/xsenv"		: "2.2.0"
+	},
+	"keywords": ["Database", "hdb", "CF", "Cloud Foundry", "SAP"],
+	"license": "ISC"
+}
