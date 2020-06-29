@@ -133,6 +133,15 @@ module.exports = function(oApp){
 	}));
 	
 	/**
+	 * Procedure
+	 */
+	 oApp.get("/test-procedure", wrap(async(oReq, oRes) => {
+	 	const v = await SapCfDb.callProcedure("PROCEDURETEST", { ID_TEST : 1 }, ["ID_OUT","EXAMPLE"]);
+	 	oRes.json(v);
+	 }));
+	
+	
+	/**
 	 * Error handling
 	 */
 	oApp.use((oErr, oReq, oRes, fnNext) => {
