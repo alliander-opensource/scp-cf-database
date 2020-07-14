@@ -1,4 +1,8 @@
-# 1.0.2
+# 1.0.4
+###### 14-07-2020
+@sap/hana-client versie bijgewerkt naar de laatste versie 2.5.101
+
+# 1.0.2-3
 ###### 29-06-2020
 [FIX] Procedures aanroepen werkte niet, dat is nu verholpen
 @sap/hana-client versie bijgewerkt naar de laatste versie 2.5.86
