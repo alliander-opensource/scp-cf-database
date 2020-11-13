@@ -1,3 +1,9 @@
+# 1.0.5
+###### 13-11-2020
+[FIX] Er kon zich een probleem voordoen met het geheugen van de DB.
+Je kreeg dan een melding '{"error":"cannot allocate enough memory: Out of memory on query open"}'
+Daarom his de Connection exec functie herschreven zodat het statement altijd gedropped wordt en dus het geheugen gecleared.
+
 # 1.0.4
 ###### 14-07-2020
 @sap/hana-client versie bijgewerkt naar de laatste versie 2.5.101
