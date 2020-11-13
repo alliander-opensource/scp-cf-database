@@ -23,7 +23,7 @@ const a = await DB.query(`SELECT * FROM "table.Example" WHERE "foo" = ?`, ["bar"
 Inserting will give back the created insert
 ```js
 const a = await DB.insert("table.Example", { foo: "bar"});
-conole.log(a); // { id: 1234, foo: "bar"}
+console.log(a); // { id: 1234, foo: "bar"}
 ```
 
 ### update
