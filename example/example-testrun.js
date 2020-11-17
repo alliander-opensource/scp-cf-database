@@ -1,5 +1,5 @@
 "use strict";
-const SapCfDb			= require("../lib/index"), // require("sap-cf-database");
+const SapCfDb			= require("../modules/sap-cf-database"),
 	{serializeError }	= require('serialize-error'),
 	{ format }			= require("util");
 module.exports = function(oApp){ 
@@ -7,7 +7,7 @@ module.exports = function(oApp){
 	const wrap = fn => (...args) => fn(...args).catch(args[2]);
 	
 	oApp.get("/", (oReq, oRes) => {
-		oRes.send("go to /test");
+		oRes.send("go to /testall");
 	});
 	
 	
@@ -66,9 +66,14 @@ module.exports = function(oApp){
 				{ street: "Fotograaf" },
 				{ id: oReq._DBLOG.insert.id }
 			);
+			const v3 = await SapCfDb.select(
+				"sapCfDatabase.address",
+				{ id: oReq._DBLOG.insert.id }
+			);
 			fnAddDBLOG(oReq, "update", {
 				"example1": v1,
-				"example2": v2
+				"example2": v2,
+				"example3": v3
 			});
 			fnNext();
 		}),
@@ -106,6 +111,23 @@ module.exports = function(oApp){
 	}));
 	
 	oApp.get("/testInsertBatch", wrap(async (oReq, oRes) => {
+		const result = await SapCfDb.queryBatch(
+			'INSERT INTO "sapCfDatabase.address"("street", "no", "postalCode", "city") VALUES (?, ? ,? ,?)', 
+			[
+				["Frans Arnoldstraat", 13, "6433DH", "Hoensbroek"],
+				["Leemkampsweg", 5, "6415RP", "Heerlen"],
+			]
+		);
+		const dbentries = await SapCfDb.select("sapCfDatabase.address");
+		const deleted = await SapCfDb.delete("sapCfDatabase.address");
+		oRes.json({
+			result,
+			dbentries,
+			deleted
+		});
+	}));
+	
+	oApp.get("/testInsertBatch2", wrap(async (oReq, oRes) => {
 		const aInserts = [
 			{
 				street			: "Dijkgraaf",  
@@ -120,14 +142,20 @@ module.exports = function(oApp){
 				city			: "Duiven"
 			}
 		];
-		const aResult = await SapCfDb.insert("sapCfDatabase.address", aInserts);
-		oRes.json(aResult);
+		const result = await SapCfDb.insertBatch("sapCfDatabase.address", aInserts);
+		const dbentries = await SapCfDb.select("sapCfDatabase.address");
+		const deleted = await SapCfDb.delete("sapCfDatabase.address");
+		oRes.json({
+			result,
+			dbentries,
+			deleted
+		});
 	}));
 	
 	/**
 	 * /read
 	 */
-	oApp.get("/testf", wrap(async (oReq, oRes, fnNext) => {
+	oApp.get("/testf", wrap(async (oReq, oRes) => {
 		const a = await SapCfDb.query('SELECT * from "sapCfDatabase.address"');
 		oRes.json(a);
 	}));
@@ -140,7 +168,6 @@ module.exports = function(oApp){
 	 	oRes.json(v);
 	 }));
 	
-	
 	/**
 	 * Error handling
 	 */
@@ -149,5 +176,11 @@ module.exports = function(oApp){
 	});
 	
 	return  oApp;
+	
+	
+
+
+	
+	
 };
 
