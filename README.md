@@ -19,19 +19,39 @@ Exec a query
 const a = await DB.query(`SELECT * FROM "table.Example" WHERE "foo" = ?`, ["bar"]);
 ```
 
+### batch query 
+Exec a batch query
+```js
+const i = await DB.queryBatch('INSERT INTO "table.Example"("foo", "example") VALUES (?, ?)', [['bar', 'text'], ['bar 2', 'text 2']]);
+console.log(i); // 2 // no affected rows 
+```
+
 ### insert
-Inserting will give back the created insert
+Inserting will return the created insert
 ```js
 const a = await DB.insert("table.Example", { foo: "bar"});
 console.log(a); // { id: 1234, foo: "bar"}
 ```
 
+### batch insert
+A batch insert will return the no of affected rows
+```js
+const i = await DB.insertBatch(
+	"table.Example", 
+	[
+		{ "foo": "bar", "example": "text" },
+		{ "foo": "bar 2", "example": "text 2" }
+	]
+);
+console.log(i); // 2 // no affected rows 
+```
+
 ### update
-UPDATE "table.Example" set "foo" = 'bar', "voorbeeld" = 'tekst' WHERE "id" = 1
+UPDATE "table.Example" set "foo" = 'bar', "example" = 'text' WHERE "id" = 1
 ```js
 await DB.update(
 	"table.Example", //tabel
-	{ foo: "bar", voorbeeld: "tekst"}, // data
+	{ foo: "bar", example: "text"}, // data
 	`"id" = ?`, //filter
 	[1] // filter waarden
 );
