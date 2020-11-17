@@ -1,3 +1,7 @@
+# 1.1.0
+###### 17-11-2020
+[FEATURE] nieuwe methode queryBatch en static method insertBatch toegevoegd waarmee batches kunnen worden gedaan.
+
 # 1.0.5
 ###### 13-11-2020
 [FIX] Er kon zich een probleem voordoen met het geheugen van de DB.
