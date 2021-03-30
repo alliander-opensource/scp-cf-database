@@ -1,3 +1,7 @@
+# 1.1.1
+###### 30-03-2020
+sap hana-client package update 2.7.26
+
 # 1.1.0
 ###### 17-11-2020
 [FEATURE] nieuwe methode queryBatch en static method insertBatch toegevoegd waarmee batches kunnen worden gedaan.
