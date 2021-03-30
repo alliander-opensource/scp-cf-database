@@ -13,7 +13,7 @@
 	},
 	"dependencies": {
 		"@sap/hana-client"	: "2.7.26",
-		"@sap/xsenv"		: "3.0.0"
+		"@sap/xsenv"		: "3.1.0"
 	},
 	"keywords": ["Database", "hdb", "CF", "Cloud Foundry", "SAP"],
 	"license": "ISC"
