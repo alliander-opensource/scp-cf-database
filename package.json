@@ -1,6 +1,6 @@
 {
 	"name"			: "scp-cf-database",
-	"version"		: "1.1.4",
+	"version"		: "1.1.5",
 	"author"		: "Max Spanning",
 	"description"	: "scp-cf-database versimpeld het werken met de CF database.\r\n - De connectie wordt automatisch gelegd in de constructor dus daar hoef je niet meer naar te kijken.\r\n - Daardoor kan je deze class rechtstreeks aanspreken ipv hem uit je request object te halen / mee te geven naar een andere functie.\r\n - Alle queries worden automatisch escaped\r\n Daarnaast zitten er nog een aantal handige functies bij. ",
 	"main"			: "./lib/index",

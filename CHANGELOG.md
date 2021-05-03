@@ -1,4 +1,4 @@
-# 1.1.4
+# 1.1.4 - 1.1.5
 ###### 03-05-2021
 Op het moment dat een query fout gaat kan nu in de catch bij .sqlQuery en .sqlParams de query zien waarbij het fout is gegaan 
 
