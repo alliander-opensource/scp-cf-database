@@ -1,5 +1,9 @@
+# 1.1.4
+###### 03-05-2021
+Op het moment dat een query fout gaat kan nu in de catch bij .sqlQuery en .sqlParams de query zien waarbij het fout is gegaan
+
 # 1.1.1 - 1.1.3
-###### 30-03-2020
+###### 30-03-2021
 sap hana-client package update 2.7.26
 
 # 1.1.0
